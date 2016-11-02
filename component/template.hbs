@@ -3,25 +3,263 @@
     {{!-- This partial contains the quantity, name, and description fields --}}
     {{partial "host/add-common"}}
 
+
     <div class="over-hr r-mt20 r-mb20">
-      <span>My Skeleton Driver</span>
+      <span>Account Access</span>
     </div>
 
-    {{!-- An example input option --}}
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Username*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.user
+              }}
+        </div>
+
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Password*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="password"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.password
+              }}
+        </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-12 col-md-2 form-label">
-        <label class="form-control-static">Size</label>
+        <label class="form-control-static">Endpoint*</label>
       </div>
       <div class="col-sm-12 col-md-4">
-        <div class="input-group">
           {{input type="text"
             class="form-control"
-            value=model.%%DRIVERNAME%%Config.size
+            value=model.%%DRIVERNAME%%Config.xmlrpcurl
           }}
-          <span class="input-group-addon">MB</span>
-        </div>
       </div>
     </div>
+
+   <div class="over-hr r-mt20 r-mb20">
+      <span>Instance</span>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-md-2 form-label">
+        <label class="form-control-static">CPU</label>
+      </div>
+
+      <div class="col-sm-2 col-md-1 form-control-static">
+        {{model.%%DRIVERNAME%%Config.cpu}}
+      </div>
+      <div class="col-sm-10 col-md-3 form-control-static">
+        {{input-slider value=model.%%DRIVERNAME%%Config.cpu valueMin=1 valueMax=64}}
+      </div>
+
+      <div class="col-md-2 form-label">
+        <label class="form-control-static">VCPU</label>
+      </div>
+
+      <div class="col-sm-2 col-md-1 form-control-static">
+        {{model.%%DRIVERNAME%%Config.vcpu}}
+      </div>
+      <div class="col-sm-10 col-md-3 form-control-static">
+        {{input-slider value=model.%%DRIVERNAME%%Config.vcpu valueMin=1 valueMax=64}}
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Memory</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="input-group">
+              {{input type="number"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.memory
+              }}
+              <span class="input-group-addon">MB</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="over-hr r-mt20 r-mb20">
+      <span>Image</span>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Image Id*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.imageId
+              }}
+        </div>
+
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Image Name*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.imageName
+              }}
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Image Dev Prefix</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.devPrefix
+              }}
+        </div>
+
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">VM Disk size</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="input-group">
+              {{input type="number"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.diskResize
+              }}
+              <span class="input-group-addon">MB</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-12 col-md-2 form-label">
+        <label class="form-control-static">Image Owner</label>
+      </div>
+      <div class="col-sm-12 col-md-4">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.imageOwner
+          }}
+      </div>
+
+
+      <div class="col-sm-12 col-md-2 form-label">
+          <label class="form-control-static">Volatile Disk Size (only for b2d)</label>
+      </div>
+      <div class="col-sm-12 col-md-4">
+         <div class="input-group">
+           {{input type="number"
+             class="form-control"
+             value=model.%%DRIVERNAME%%Config.b2dSize
+            }}
+            <span class="input-group-addon">MB</span>
+         </div>
+       </div>
+    </div>
+
+    <div class="over-hr r-mt20 r-mb20">
+      <span>Template</span>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Template Id*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.templateId
+              }}
+        </div>
+
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Template Name*</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.templateName
+              }}
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-2 form-label">
+        <label class="form-control-static">Template Owner</label>
+      </div>
+      <div class="col-sm-12 col-md-4">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.templateOwner
+          }}
+      </div>
+    </div>
+
+    <div class="over-hr r-mt20 r-mb20">
+      <span>Network</span>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Network Id</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.networkId
+              }}
+        </div>
+
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">Network Name</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.networkName
+              }}
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-2 form-label">
+        <label class="form-control-static">Network Owner</label>
+      </div>
+      <div class="col-sm-12 col-md-4">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.networkOwner
+          }}
+      </div>
+    </div>
+
+    <div class="over-hr r-mt20 r-mb20">
+      <span>Options</span>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12 col-md-2 form-label">
+            <label class="form-control-static">SSH User</label>
+        </div>
+        <div class="col-sm-12 col-md-4">
+              {{input type="text"
+              class="form-control"
+              value=model.%%DRIVERNAME%%Config.sshUser
+              }}
+        </div>
+
+        <div class="form-label checkbox">
+           <label>{{input type="checkbox" checked=model.%%DRIVERNAME%%Config.disableVNC}} Disable VNC</label>
+        </div>
+
+    </div>
+
 
     {{!-- This partial contains the Labels and Advanced Options fields --}}
     {{partial "host/add-options"}}

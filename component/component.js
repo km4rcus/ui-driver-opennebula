@@ -10,7 +10,9 @@ define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'emb
     bootstrap: function() {
       let config = this.get('store').createRecord({
         type        : '%%DRIVERNAME%%Config',
-        size        : 512,
+        cpu         : 1,
+        diskSize    : 20000,
+        memory      : 1024,
       });
 
       this.set('model', this.get('store').createRecord({
@@ -28,10 +30,10 @@ define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'emb
       // Add more specific errors
 
       // Check something and add an error entry if it fails:
-      if ( parseInt(this.get('model.%%DRIVERNAME%%Config.size'),10) < 1024 )
-      {
-        errors.push('Size must be at least 1024 MB');
-      }
+      //if ( parseInt(this.get('model.%%DRIVERNAME%%Config.size'),10) < 1024 )
+      //{
+      //  errors.push('Size must be at least 1024 MB');
+      //}
 
       // Set the array of errors for display,
       // and return true if saving should continue.
