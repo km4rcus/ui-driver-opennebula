@@ -15,8 +15,14 @@ define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'emb
         memory      : 1024,
       });
 
+      let type = 'host';
+
+      if (!this.get('useHost')) {
+        type = 'machine';
+      }
+
       this.set('model', this.get('store').createRecord({
-        type: 'machine',
+        type: type,
         '%%DRIVERNAME%%Config': config,
       }));
     },
